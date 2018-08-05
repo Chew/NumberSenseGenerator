@@ -138,5 +138,3 @@ class NumberSense
     puts "Final count: #{correctprobs} / #{@problems.length}"
   end
 end
-
-NumberSense.new
