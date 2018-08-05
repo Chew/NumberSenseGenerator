@@ -114,8 +114,8 @@ class NumberSense
 
   def askproblems
     problem = 0
-    correct = 0
-    incorrect = 0
+    correctprobs = 0
+    incorrectprobs = 0
     @problems.length.times do |_askme|
       puts "Problem #{problem + 1}: #{@problems[problem]}"
       print 'Answer > '
@@ -129,14 +129,14 @@ class NumberSense
                end
       if answer == correct
         puts 'YOU GOT IT RIGHT!!! MONEY FLIPPING MATT RICHARDS IS HAPPY!'
-        correct += 1
+        correctprobs += 1
       else
         puts "WRONG WRONG SO WRONG! Correct answer was #{correct}"
-        incorrect += 1
+        incorrectprobs += 1
       end
       problem += 1
     end
-    puts "Final count: #{correct} / 80"
+    puts "Final count: #{correctprobs} / #{@problems.length}"
   end
 end
 
