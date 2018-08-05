@@ -2,6 +2,7 @@ Gem::Specification.new do |s|
   s.name = 'numbersense'
   s.version = '0.1.0'
   s.date = '2018-08-05'
+  s.executables << 'numbersense'
   s.summary = 'Generate a Number Sense test!'
   s.description = 'Generate a Number Sense test!'
   s.authors = ['Chewsterchew']
