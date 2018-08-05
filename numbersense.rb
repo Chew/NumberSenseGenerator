@@ -38,7 +38,7 @@ class NumberSense
     # rand(0..1) picks a random problem from type 0 or 1
     # , 0) is the first problem
     types(rand(0..1), 0)
-    (2..9).each do |i|
+    (2..10).each do |i|
       types(rand(1..8), i)
     end
   end
