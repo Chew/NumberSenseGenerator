@@ -1,3 +1,6 @@
+# Require external gems
+require 'roman-numerals'
+
 # NumberSense Test Generator Program
 class NumberSense
   # The types of problems
@@ -38,8 +41,8 @@ class NumberSense
     # rand(0..1) picks a random problem from type 0 or 1
     # , 0) is the first problem
     types(rand(0..1), 0)
-    (2..10).each do |i|
-      types(rand(1..8), i)
+    (2..9).each do |i|
+      types(rand(1..9), i)
     end
   end
 
@@ -108,6 +111,9 @@ class NumberSense
       num1 = rand(4..9)
       @problems[arr] = "#{num1}^3"
       @answers[arr] = num1**3
+    when 9
+      @answers[arr] = rand(0..3000)
+      @problems[arr] = RomanNumerals.to_roman(@answers[arr])
     end
     @types[arr] = typenum
   end
