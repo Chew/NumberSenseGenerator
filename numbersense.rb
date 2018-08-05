@@ -116,14 +116,13 @@ class NumberSense
     problem = 0
     correctprobs = 0
     incorrectprobs = 0
-    @problems.length.times do |_askme|
+    @problems.length.times do |askme|
       puts "Problem #{problem + 1}: #{@problems[problem]}"
       print 'Answer > '
       answer = gets.chomp
-      numeros = @problems[problem].split(' + ')
-      correct = numeros[0].to_i + numeros[1].to_i
+      correct = @answers[askme]
       answer = if answer == ''
-                 34_572_358_659_083_589_365_943_625_934_650_983_653_597_394_053_259_634_253
+                 34_572_358_659_083_589_365_943_625_934_650_983_653_597_394_053
                else
                  answer.to_i
                end
