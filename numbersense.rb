@@ -120,11 +120,7 @@ class NumberSense
       print 'Answer > '
       answer = gets.chomp
       correct = @answers[problem]
-      answer = if answer == ''
-                 34_572_358_659_083_589_365_943_625_934_650_983_653_597_394_053
-               else
-                 answer.to_i
-               end
+      answer = answer.to_i
       if answer == correct
         puts 'YOU GOT IT RIGHT!!! MONEY FLIPPING MATT RICHARDS IS HAPPY!'
         correctprobs += 1
