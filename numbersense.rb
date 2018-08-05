@@ -39,7 +39,7 @@ class NumberSense
     # , 0) is the first problem
     types(rand(0..1), 0)
     (2..9).each do |i|
-      types(i)
+      types(rand(1..8), i)
     end
   end
 
@@ -47,6 +47,7 @@ class NumberSense
   # @param typenum [Integer] what type of problem to generate.
   # @param arr [Integer] what spot in the array are we setting
   def types(typenum, arr)
+    @types[arr] = typenum
     case typenum
     when 0
       # Generate random numbers
@@ -76,7 +77,7 @@ class NumberSense
       num1 = rand(0..999)
       # Store problem and answer to array
       @problems[arr] = "#{num1} x 11"
-      @answers[arr] = num1 x 11
+      @answers[arr] = num1 * 11
     when 3
       # Generate random number
       num1 = rand(0..999)
@@ -109,7 +110,6 @@ class NumberSense
       @problems[arr] = "#{num1}^3"
       @answers[arr] = num1**3
     end
-    @type[arr] = typenum
   end
 
   def askproblems
