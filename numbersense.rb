@@ -113,14 +113,13 @@ class NumberSense
   end
 
   def askproblems
-    problem = 0
     correctprobs = 0
     incorrectprobs = 0
-    @problems.length.times do |askme|
+    @problems.length.times do |problem|
       puts "Problem #{problem + 1}: #{@problems[problem]}"
       print 'Answer > '
       answer = gets.chomp
-      correct = @answers[askme]
+      correct = @answers[problem]
       answer = if answer == ''
                  34_572_358_659_083_589_365_943_625_934_650_983_653_597_394_053
                else
@@ -133,7 +132,6 @@ class NumberSense
         puts "WRONG WRONG SO WRONG! Correct answer was #{correct}"
         incorrectprobs += 1
       end
-      problem += 1
     end
     puts "Final count: #{correctprobs} / #{@problems.length}"
   end
