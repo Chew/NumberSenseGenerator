@@ -47,7 +47,6 @@ class NumberSense
   # @param typenum [Integer] what type of problem to generate.
   # @param arr [Integer] what spot in the array are we setting
   def types(typenum, arr)
-    @types[arr] = typenum
     case typenum
     when 0
       # Generate random numbers
@@ -110,6 +109,7 @@ class NumberSense
       @problems[arr] = "#{num1}^3"
       @answers[arr] = num1**3
     end
+    @types[arr] = typenum
   end
 
   def askproblems
