@@ -15,7 +15,8 @@ class NumberSense
     6 => 'Roman Numeral => Arabic',
     7 => 'Arabic => Roman Numeral',
     8 => '11-99 x 25,50,75',
-    9 => '2-3 digit numbers x 12-19'
+    9 => '2-3 digit numbers x 12-19',
+    10 => '#10 problem, lotta + or -'
   }.freeze
 
   # Initialize the program
@@ -43,7 +44,11 @@ class NumberSense
     # , 0) is the first problem
     types(rand(0..1), 0)
     (1..8).each do |i|
-      types(rand(1..7), i)
+      types(rand(1..9), i)
+    end
+    types(10, 9)
+    (10..18).each do |i|
+      types(rand(1..9), i)
     end
   end
 
@@ -112,7 +117,7 @@ class NumberSense
       @problems[arr] = RomanNumerals.to_roman(@answers[arr])
     when 7
       @problems[arr] = rand(0..3000)
-      @answers[arr] = RomanNumerals.to_decimal(@problems[arr])
+      @answers[arr] = RomanNumerals.to_roman(@problems[arr])
     when 8
       num1 = rand(11..99)
       num2 = rand(1..3) * 25
@@ -123,8 +128,30 @@ class NumberSense
       num2 = rand(12..19)
       @problems[arr] = "#{num1} x #{num2}"
       @answers[arr] = num1 * num2
+    when 10
+      num1 = rand(1..9999)
+      num2 = rand(1..9999)
+      num3 = rand(1..9999)
+      sign1 = ['+', '-'].sample
+      sign2 = ['+', '-'].sample
+      @problems[arr] = "#{num1} #{sign1} #{num2} #{sign2} #{num3}"
+      ans1 = if sign1 == '+'
+               num1 + num2
+             else
+               num1 - num2
+             end
+      answer = if sign2 == '+'
+                 ans1 + num3
+               else
+                 ans1 - num3
+               end
+      @answers[arr] = fivepercent(answer)
     end
     @types[arr] = typenum
+  end
+
+  def fivepercent(correct)
+    "#{correct * 0.95} -- #{correct * 1.05}"
   end
 
   def generatefile
