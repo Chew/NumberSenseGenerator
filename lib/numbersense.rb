@@ -14,7 +14,8 @@ class NumberSense
     5 => 'Cubing 4-9',
     6 => 'Roman Numeral => Arabic',
     7 => 'Arabic => Roman Numeral',
-    8 => '11-99 x 25,50,75'
+    8 => '11-99 x 25,50,75',
+    9 => '2-3 digit numbers x 12-19'
   }.freeze
 
   # Initialize the program
@@ -115,6 +116,11 @@ class NumberSense
     when 8
       num1 = rand(11..99)
       num2 = rand(1..3) * 25
+      @problems[arr] = "#{num1} x #{num2}"
+      @answers[arr] = num1 * num2
+    when 9
+      num1 = rand(10..999)
+      num2 = rand(12..19)
       @problems[arr] = "#{num1} x #{num2}"
       @answers[arr] = num1 * num2
     end
