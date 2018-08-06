@@ -13,7 +13,8 @@ class NumberSense
     4 => 'Squaring 13-34 (not mul. 5)',
     5 => 'Cubing 4-9',
     6 => 'Roman Numeral => Arabic',
-    7 => 'Arabic => Roman Numeral'
+    7 => 'Arabic => Roman Numeral',
+    8 => '11-99 x 25,50,75'
   }.freeze
 
   # Initialize the program
@@ -112,6 +113,11 @@ class NumberSense
     when 7
       @problems[arr] = rand(0..3000)
       @answers[arr] = RomanNumerals.to_decimal(@problems[arr])
+    when 8
+      num1 = rand(11..99)
+      num2 = rand(1..3) * 25
+      @problems[arr] = "#{num1} x #{num2}"
+      @answers[arr] = num1 * num2
     end
     @types[arr] = typenum
   end
