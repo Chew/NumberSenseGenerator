@@ -151,7 +151,7 @@ class NumberSense
   end
 
   def fivepercent(correct)
-    "#{correct * 0.95} -- #{correct * 1.05}"
+    "#{(correct * 0.95).round(0)} -- #{(correct * 1.05).round(0)}"
   end
 
   def generatefile
