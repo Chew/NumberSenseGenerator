@@ -87,15 +87,14 @@ class NumberSense
       which = rand(0..2)
       case which
       when 0
-        @problems[arr] = "#{num1} / 3"
-        @answers[arr] = num1 / 3
+        num2 = 3
       when 1
-        @problems[arr] = "#{num1} / 9"
-        @answers[arr] = num1 / 9
+        num2 = 9
       when 2
-        @problems[arr] = "#{num1} / 11"
-        @answers[arr] = num1 / 11
+        num2 = 11
       end
+      @problems[arr] = "#{num1} / #{num2}"
+      @answers[arr] = num1 / num2
     when 4
       # Start with a multiple to start the loop.
       num1 = 5
