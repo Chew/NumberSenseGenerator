@@ -10,12 +10,10 @@ class NumberSense
     1 => 'Reverse digit subtraction',
     2 => 'Multiplying by 11',
     3 => 'Remainder by 3, 9, 11',
-    4 => 'Fraction => Percent/Decimal',
-    5 => 'Decimal => Fraction/Percent',
-    6 => 'Percent => Decimal/Fraction',
-    7 => 'Squaring 13-34 (not mul. 5)',
-    8 => 'Cubing 4-9',
-    9 => 'Roman Numeral => Arabic'
+    4 => 'Squaring 13-34 (not mul. 5)',
+    5 => 'Cubing 4-9',
+    6 => 'Roman Numeral => Arabic',
+    7 => 'Arabic => Roman Numeral'
   }.freeze
 
   # Initialize the program
@@ -43,7 +41,7 @@ class NumberSense
     # , 0) is the first problem
     types(rand(0..1), 0)
     (2..9).each do |i|
-      types(9, i)
+      types(rand(1..7), i)
     end
   end
 
@@ -98,23 +96,22 @@ class NumberSense
         @answers[arr] = num1 / 11
       end
     when 4
-      # Generate Fraction
-    when 5
-    when 6
-    when 7
       # Start with a multiple to start the loop.
       num1 = 5
       # Generate a number between 13-34, no multiple of 5.
       num1 = rand(13..34) until num1 % 5 != 0
       @problems[arr] = "#{num1}^2"
       @answers[arr] = num1**2
-    when 8
+    when 5
       num1 = rand(4..9)
       @problems[arr] = "#{num1}^3"
       @answers[arr] = num1**3
-    when 9
+    when 6
       @answers[arr] = rand(0..3000)
       @problems[arr] = RomanNumerals.to_roman(@answers[arr])
+    when 7
+      @problems[arr] = rand(0..3000)
+      @answers[arr] = RomanNumerals.to_decimal(@problems[arr])
     end
     @types[arr] = typenum
   end
