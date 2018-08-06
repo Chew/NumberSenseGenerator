@@ -1,4 +1,5 @@
 # Require external gems
+require 'docx_replace'
 require 'roman-numerals'
 
 # NumberSense Test Generator Program
@@ -32,7 +33,7 @@ class NumberSense
     # Scott Rogowsky was here
     puts 'Lets get down to the nitty gritty here at cumero numero uno'
     # Do the ask dance
-    askproblems
+    generatefile
   end
 
   # Generate all the problems
@@ -42,7 +43,7 @@ class NumberSense
     # , 0) is the first problem
     types(rand(0..1), 0)
     (2..9).each do |i|
-      types(rand(1..9), i)
+      types(9, i)
     end
   end
 
@@ -118,23 +119,23 @@ class NumberSense
     @types[arr] = typenum
   end
 
-  def askproblems
-    correctprobs = 0
-    incorrectprobs = 0
+  def generatefile
+    # Initialize DocxReplace with your template
+    doc = DocxReplace::Doc.new('template.docx')
+    ansdoc = DocxReplace::Doc.new('template.docx')
+
     @problems.length.times do |problem|
-      puts "Problem #{problem + 1}: #{@problems[problem]}"
-      print 'Answer > '
-      answer = gets.chomp
-      correct = @answers[problem]
-      answer = answer.to_i
-      if answer == correct
-        puts 'YOU GOT IT RIGHT!!! MONEY FLIPPING MATT RICHARDS IS HAPPY!'
-        correctprobs += 1
-      else
-        puts "WRONG WRONG SO WRONG! Correct answer was #{correct}"
-        incorrectprobs += 1
-      end
+      doc.replace("{problem.#{problem + 1}}", @problems[problem])
     end
-    puts "Final count: #{correctprobs} / #{@problems.length}"
+    @answers.length.times do |problem|
+      ansdoc.replace("{problem.#{problem + 1}}", @answers[problem])
+    end
+    id = Time.now.to_i
+    name = "problems_#{id}.docx"
+    answername = "answers_#{id}.docx"
+    `cp template.docx #{name}`
+    `cp template.docx #{answername}`
+    doc.commit(name)
+    ansdoc.commit(answername)
   end
 end
