@@ -1,0 +1,5 @@
+problems_*.docx
+answers_*.docx
+numbersense-*.gem
+~$*
+.DS_Store
