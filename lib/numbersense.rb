@@ -30,9 +30,9 @@ class NumberSense
     puts 'Generating problems'
     # Run the generateproblems method
     generateproblems
-    # Scott Rogowsky was here
-    puts 'Lets get down to the nitty gritty here at cumero numero uno'
-    # Do the ask dance
+    # Let the user know the file is generating...
+    puts 'The document file is generating...'
+    # Do the file generate dance
     generatefile
   end
 
@@ -137,5 +137,7 @@ class NumberSense
     `cp template.docx #{answername}`
     doc.commit(name)
     ansdoc.commit(answername)
+    puts 'Problems saved as: ' + name
+    puts 'Answers saved as: ' + answername
   end
 end
