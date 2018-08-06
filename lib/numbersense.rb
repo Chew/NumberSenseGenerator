@@ -155,9 +155,11 @@ class NumberSense
   end
 
   def generatefile
+    loc = `gem env`.split("\n")
+    dir = loc[3].split(': ')[1] + "/gems/numbersense-0.1.0/template.docx"
     # Initialize DocxReplace with your template
-    doc = DocxReplace::Doc.new('template.docx')
-    ansdoc = DocxReplace::Doc.new('template.docx')
+    doc = DocxReplace::Doc.new(dir)
+    ansdoc = DocxReplace::Doc.new(dir)
 
     @problems.length.times do |problem|
       doc.replace("{problem.#{problem + 1}}", @problems[problem])
@@ -168,8 +170,8 @@ class NumberSense
     id = Time.now.to_i
     name = "problems_#{id}.docx"
     answername = "answers_#{id}.docx"
-    `cp template.docx #{name}`
-    `cp template.docx #{answername}`
+    `cp #{dir} #{name}`
+    `cp #{dir} #{answername}`
     doc.commit(name)
     ansdoc.commit(answername)
     puts 'Problems saved as: ' + name
