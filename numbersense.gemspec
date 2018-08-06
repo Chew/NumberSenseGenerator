@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.description = 'Generate a Number Sense test!'
   s.authors = ['Chewsterchew']
   s.email = 'chew@chew.pw'
-  s.files = Dir['lib/**/*.rb']
+  s.files = ['lib/numbersense.rb', 'template.docx']
   s.homepage = 'http://github.com/Chewsterchew/NumberSense'
   s.license = 'MIT'
   s.add_runtime_dependency 'roman-numerals', '~> 0.3.0'
