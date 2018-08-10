@@ -160,7 +160,6 @@ class NumberSense
     # Initialize DocxReplace with your template
     doc = DocxReplace::Doc.new(dir)
     ansdoc = DocxReplace::Doc.new(dir)
-
     @problems.length.times do |problem|
       doc.replace("{problem.#{problem + 1}}", @problems[problem])
     end
