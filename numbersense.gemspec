@@ -8,8 +8,9 @@ Gem::Specification.new do |s|
   s.authors = ['Chewsterchew']
   s.email = 'chew@chew.pw'
   s.files = ['lib/numbersense.rb', 'template.docx']
-  s.homepage = 'http://github.com/Chewsterchew/NumberSense'
+  s.homepage = 'http://github.com/Chewsterchew/NumberSenseGenerator'
   s.license = 'MIT'
   s.add_runtime_dependency 'roman-numerals', '~> 0.3.0'
+  s.add_runtime_dependency 'docx_replace', '~> 1.2.0'
   s.required_ruby_version = '>= 2.2.4'
 end
