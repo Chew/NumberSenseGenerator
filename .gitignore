@@ -3,3 +3,4 @@ answers_*.docx
 numbersense-*.gem
 ~$*
 .DS_Store
+.~*.doc*
